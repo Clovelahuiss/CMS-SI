@@ -33,3 +33,5 @@ Ce projet académique vise à intégrer AJAX pour connecter une application web 
 - ![XML](https://img.shields.io/badge/XML-lightgrey?logo=xml&logoColor=white) XML
 - ![JWT](https://img.shields.io/badge/JWT-blue?logo=json-web-tokens&logoColor=white) JWT
 - ![SPA](https://img.shields.io/badge/SPA-green?logo=appveyor&logoColor=white) SPA
+
+
