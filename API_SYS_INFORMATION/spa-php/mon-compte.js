@@ -1,14 +1,24 @@
 console.log("✅ Script mon-compte.js chargé depuis CMS");
 
-function loadUserInfo() {
+(async () => {
+  if (typeof ROUTE_PREFIX === "undefined") {
+    await new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "http://192.168.1.77/router.js";
+      script.onload = resolve;
+      script.onerror = () => reject("❌ router.js non chargé !");
+      document.head.appendChild(script);
+    });
+  }
+
   const token = localStorage.getItem("jwt");
   console.log("🔑 Token :", token);
 
   if (!token) {
-    const el = document.getElementById("user-info") || document.body;
-    el.innerHTML = "<p>Non autorisé. Veuillez vous connecter.</p>";
-    return;
-  }
+  window.location.href = `${ROUTE_PREFIX}/login${ROUTE_SUFFIX}`;
+  return;
+}
+
 
   fetch("http://192.168.1.77/api/mon-compte.php", {
     headers: {
@@ -31,7 +41,4 @@ function loadUserInfo() {
     .catch(err => {
       console.error("❌ Erreur fetch /mon-compte.php :", err);
     });
-}
-
-// Petit délai pour s’assurer que le HTML a été injecté
-setTimeout(loadUserInfo, 100);
+})();

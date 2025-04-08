@@ -1,6 +1,22 @@
 console.log("📅 Script reservation.js chargé depuis CMS");
 
-function initReservation() {
+(async () => {
+  if (typeof ROUTE_PREFIX === "undefined") {
+    await new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "http://192.168.1.77/router.js";
+      script.onload = resolve;
+      script.onerror = () => reject("❌ router.js non chargé !");
+      document.head.appendChild(script);
+    });
+  }
+
+  const token = localStorage.getItem("jwt");
+  if (!token) {
+    window.location.href = `${ROUTE_PREFIX}/login${ROUTE_SUFFIX}`;
+    return;
+  }
+
   const form = document.getElementById("resa-form");
   if (!form) {
     console.error("❌ Formulaire non trouvé !");
@@ -14,12 +30,6 @@ function initReservation() {
     const date = document.getElementById("date").value;
     const message = document.getElementById("resa-message");
 
-    const token = localStorage.getItem("jwt");
-    if (!token) {
-      message.textContent = "Veuillez vous connecter.";
-      return;
-    }
-
     console.log("📝 Envoi des données :", { terrain_id, date });
 
     try {
@@ -27,7 +37,7 @@ function initReservation() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-	  "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({ terrain_id, date })
       });
@@ -45,7 +55,4 @@ function initReservation() {
       message.textContent = "Erreur réseau.";
     }
   });
-}
-
-// Appelle directement la fonction
-initReservation();
+})();
