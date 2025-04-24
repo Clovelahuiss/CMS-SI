@@ -1,9 +1,5 @@
 ⚠️ PROJET EN COURS
 
-# Intégration AJAX pour SPA et WordPress
-
-Bien sûr ! Voici le contenu complet du `README.md` dans un **bloc de code prêt à copier/coller** :
-
 
 # 🎯 CMS-SI : Système d’Information décorrélé d’un CMS WordPress
 
