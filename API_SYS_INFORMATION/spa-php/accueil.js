@@ -5,7 +5,7 @@ console.log("🏠 Script accueil.js chargé");
   if (typeof ROUTE_PREFIX === "undefined") {
     await new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "http://192.168.1.77/router.js";
+      script.src = "https://192.168.1.77/router.js";
       script.onload = resolve;
       script.onerror = () => reject("❌ Échec chargement router.js");
       document.head.appendChild(script);

@@ -5,7 +5,7 @@ console.log("📥 Chargement register.js");
   if (typeof ROUTE_PREFIX === "undefined" || typeof ROUTE_SUFFIX === "undefined") {
     await new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "http://192.168.1.77/router.js";
+      script.src = "https://192.168.1.77/router.js";
       script.onload = () => {
         // Attendre que ROUTE_SUFFIX soit défini
         const waitForVars = setInterval(() => {
@@ -46,7 +46,7 @@ if (token) {
     const password = document.getElementById("password").value;
 
     try {
-      const res = await fetch("http://192.168.1.77/api/register.php", {
+      const res = await fetch("https://192.168.1.77/api/register.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

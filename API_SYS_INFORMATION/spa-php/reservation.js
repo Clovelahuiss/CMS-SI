@@ -4,7 +4,7 @@ console.log("📅 Script reservation.js chargé depuis CMS");
   if (typeof ROUTE_PREFIX === "undefined") {
     await new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "http://192.168.1.77/router.js";
+      script.src = "https://192.168.1.77/router.js";
       script.onload = resolve;
       script.onerror = () => reject("❌ router.js non chargé !");
       document.head.appendChild(script);
@@ -33,7 +33,7 @@ console.log("📅 Script reservation.js chargé depuis CMS");
     console.log("📝 Envoi des données :", { terrain_id, date });
 
     try {
-      const res = await fetch("http://192.168.1.77/api/reserver.php", {
+      const res = await fetch("https://192.168.1.77/api/reserver.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
